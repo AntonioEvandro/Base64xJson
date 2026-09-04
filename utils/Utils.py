@@ -14,4 +14,6 @@ class Strings():
                 ║                                        ║
                 ╚════════════════════════════════════════╝"""
     
-    
+def menu():
+    return Strings._Menu
+
