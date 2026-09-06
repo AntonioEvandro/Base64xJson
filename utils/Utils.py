@@ -1,18 +1,22 @@
 class Strings():
     _Menu = """
-                ╔════════════════════════════════════════╗
-                ║                                        ║
-                ║       \033[34mB a s e 6 4   x   J s o n  \033[0m      ║
-                ║                                        ║
-                ╠════════════════════════════════════════╣
-                ║                                        ║
-                ║ • Coloque o arquivo na pasta inputs.   ║
-                ║                                        ║
-                ║                                        ║
-                ║ • Para sair digite (sair), (exit) ou   ║
-                ║  (q) quando quiser                     ║
-                ║                                        ║
-                ╚════════════════════════════════════════╝"""
+                ╔═══════════════════════════════════════════════════════╗
+                ║                                                       ║
+                ║               \033[34mB a s e 6 4   x   J s o n\033[0m               ║
+                ║                                                       ║
+                ╠═══════════════════════════════════════════════════════╣
+                ║                                                       ║
+                ║ • Coloque o arquivo na pasta inputs                   ║
+                ║                                                       ║
+                ║ • Escolha uma operação:                               ║
+                ║  1 - Editar os valores do save (Interativo)           ║
+                ║  2 - Exportar Save Base64 para JSON Legível           ║
+                ║  3 - Compilar JSON Legível de volta para Base64       ║
+                ║                                                       ║
+                ║ • Para sair digite (sair), (exit) ou (q) quando quiser║
+                ║                                                       ║
+                ║                                                       ║
+                ╚═══════════════════════════════════════════════════════╝"""
     
     _Exit = """
                 ╔════════════════════════════════════════╗
