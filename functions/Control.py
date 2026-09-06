@@ -18,4 +18,7 @@ def proceed():
 
 def start():
     print(menu())
-    
+    while True:
+        try: opc = input("    Opção: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            raise   
