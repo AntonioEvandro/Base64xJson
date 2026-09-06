@@ -1,12 +1,9 @@
 import os
 import sys
-from utils.Utils import menu, exit, up, clear
+from utils.Utils import menu, up, clear, end, backExit
 from functions.Converter import convert
 from functions.Editor import edit
 
-def end():
-    print(exit())
-    sys.exit(0)
 
 def proceed():
     while True:
@@ -22,15 +19,12 @@ def proceed():
 
 def search(oper):
     path = r"inputs/"
-    while True:
+    executing = True
+    while executing:
         try: name = input("\t\t\033[0mDigite o nome do arquivo: \033[36m").strip()
         except (EOFError, KeyboardInterrupt):
             raise
-        if name in ("exit","sair","q"):
-            return end()
-        if name in ("return", "back", "voltar", "esc", "retornar"):
-            clear()
-            break
+        if backExit(name): break
         elif name:
             clear()
             print(f"\t\t\tBuscando arquivo \033[4;32m{name}\033[0m, em \033[33m\"inputs/\"")
