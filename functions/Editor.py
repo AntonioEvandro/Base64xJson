@@ -2,10 +2,13 @@ import base64
 import json
 from utils.Utils import backExit, sucess
 
-def edit(file):
+def edit(name):
     """
     Abre o arquivo Base64, lista os campos e permite edições interativas.
     """
+    inputs = r"inputs/"
+    outputs = r"outputs/"
+    file = inputs + name
     with open (file, 'r', encoding='utf-8') as f:
         encoded = f.read().strip()
 
@@ -16,15 +19,15 @@ def edit(file):
         print(f"\033[1;31m[ERRO]\033[0m Aparentemente o arquivo não é Base64. {e}")
         return
 
-    print("\n" + "="*40)
+    print("\n" + "="*60)
     print("\t\tCampos disponiveis no arquivo")
-    print("="*40)
+    print("="*60)
     for key, value in save.items():
         valPreview = str(value)
         if len(valPreview) > 60:
             valPreview = valPreview[:57] + "..."
         print(f"[{key}] -> {valPreview}")
-        print("="*40)
+        print("="*60)
 
     while True:
         choice = input("\nDigite o nome exato do campo que deseja modificar: ").strip()
@@ -66,10 +69,10 @@ def edit(file):
     saving = input("\nDeseja salvar as modificações no arquivo original? (s/n): ").strip().lower()
     if saving == 's' or saving == 'sim':
         update = json.dumps(save, separators=(',', ':'))
-        newBase64 = base64.b16encode(update.encode('utf-8').decode('utf-8'))
+        newBase64 = base64.b64encode(update.encode('utf-8')).decode('utf-8')
 
-        with open(file, 'w', encoding='utf-8') as f:
+        with open(outputs+name, 'w', encoding='utf-8') as f:
             f.write(newBase64)
-        print(sucess)
+        print(sucess())
     else:
         print("Alterações descartadas.")
