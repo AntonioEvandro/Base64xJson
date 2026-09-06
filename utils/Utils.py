@@ -1,3 +1,5 @@
+import sys
+
 class Strings():
     _Menu = """    ╔═══════════════════════════════════════════════════════╗
     ║                                                       ║
@@ -55,3 +57,15 @@ def up():
 
 def clear():
     print("\033[0m", end="")
+
+def end():
+    print(exit())
+    sys.exit(0)
+
+def backExit(command):
+    if command in ("exit","sair","q"):
+        return end()
+    if command in ("return", "back", "voltar", "esc", "retornar"):
+        clear()
+        print("\t\t\tVoltando")
+        return True#break
