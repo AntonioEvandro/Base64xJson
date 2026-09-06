@@ -1,5 +1,6 @@
+import os
 import sys
-from utils.Utils import menu, exit, up
+from utils.Utils import menu, exit, up, clear
 from functions.Converter import convert
 from functions.Editor import edit
 
@@ -9,50 +10,55 @@ def end():
 
 def proceed():
     while True:
-        res = input("   Deseja fazer outra operação? (s/n) ")
+        res = input("\t\t\t\tDeseja fazer outra operação? \033[1;33m")
         if res in ("s", "sim", "yes", "ys", "y"):
+            clear()
             break
         elif res in ("n", "nao", "não", "no", "exit", "sair", "q"):
             return end()
         else:
-            print("   Informe uma opção válida!")
+            print("\t\t\t\t\t\033[1;31mInforme uma opção válida!"), clear()
             continue
 
-def search():
-    file = ""
+def search(file):
     while True:
-        try: file = input("\t\t\033[0mDigite o nome do arquivo: ").strip()
+        try: file = input("\t\t\033[0mDigite o nome do arquivo: \033[36m").strip()
         except (EOFError, KeyboardInterrupt):
             raise
-        up()
         if file in ("exit","sair","q"):
-            break
+            return end()
         elif file:
-            print("buscar o arquivo em inputs/")
-            break
+            clear()
+            print(f"\t\t\tBuscando arquivo \033[4;32m{file}\033[0m, em \033[33m\"inputs/\"")
+            clear()
+            if not os.path.exists(file):
+                print(f"\t\t\t\t\033[1;31m[ERRO] \033[0mArquivo \"\033[4;32m{file}\033[0m\" não encontrado.")
+            else:
+                break
         else:
-            print("Invalido!")
+            print("\t\t\t\t\t\033[31mInvalido!"), clear()
+            print("\t\t\tPor favor, digite o nome do arquivo na pasta \033[33m\"inputs/\""), clear()
 
 def start():
     print(menu())
+    file = ""
     while True:
-        try: opc = input("\t\033[34mOperação:\033[33m\t")
+        try: opc = input("\t\033[34mOperação:\033[33m ")
         except (EOFError, KeyboardInterrupt):
             raise
         if opc in ("exit", "sair", "q"):
-            up()
             end()
             break
         elif opc == "1":
-            search()
+            search(file)
             #edit()
             proceed()
         elif opc == "2":
-            search()
+            search(file)
             #convert()
             proceed()
         elif opc == "3":
-            search()
+            search(file)
             #convert()
             proceed()
         else:
