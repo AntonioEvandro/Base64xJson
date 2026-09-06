@@ -77,3 +77,8 @@ def backExit(command):
 inputs:str = Strings._Inputs
 
 outputs:str = Strings._Outputs
+
+def openFile(file):
+    with open(inputs+file, 'r', encoding='utf-8') as f:
+        data = f.read().strip()
+        return data
