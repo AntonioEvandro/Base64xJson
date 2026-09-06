@@ -18,10 +18,25 @@ def proceed():
             print("   Informe uma opção válida!")
             continue
 
+def search():
+    file = ""
+    while True:
+        try: file = input("\t\t\033[0mDigite o nome do arquivo: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            raise
+        up()
+        if file in ("exit","sair","q"):
+            break
+        elif file:
+            print("buscar o arquivo em inputs/")
+            break
+        else:
+            print("Invalido!")
+
 def start():
     print(menu())
     while True:
-        try: opc = input("\t\033[34mOpção:\033[33m\t")
+        try: opc = input("\t\033[34mOperação:\033[33m\t")
         except (EOFError, KeyboardInterrupt):
             raise
         if opc in ("exit", "sair", "q"):
@@ -29,13 +44,16 @@ def start():
             end()
             break
         elif opc == "1":
-            up()
-            edit()
+            search()
+            #edit()
+            proceed()
         elif opc == "2":
-            up()
-            convert()
+            search()
+            #convert()
+            proceed()
         elif opc == "3":
-            up()
-            convert()
+            search()
+            #convert()
+            proceed()
         else:
             print("\t\t\033[31mOpção inválida!\033[0m")
