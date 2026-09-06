@@ -1,2 +1,2 @@
-def convert():
+def convert(file, format):
     """"""
