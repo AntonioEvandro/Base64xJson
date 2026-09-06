@@ -10,14 +10,14 @@ def end():
 
 def proceed():
     while True:
-        res = input("\t\t\t\tDeseja fazer outra operação? \033[1;33m")
+        res = input("\t\tDeseja fazer outra operação? \033[1;33m")
         if res in ("s", "sim", "yes", "ys", "y"):
             clear()
             break
         elif res in ("n", "nao", "não", "no", "exit", "sair", "q"):
             return end()
         else:
-            print("\t\t\t\t\t\033[1;31mInforme uma opção válida!"), clear()
+            print("\t\t\t\033[1;31mInforme uma opção válida!"), clear()
             continue
 
 def search(oper):
@@ -39,15 +39,15 @@ def search(oper):
             if not os.path.exists(file):
                 print(f"\t\t\t\t\033[1;31m[ERRO] \033[0mArquivo \"\033[4;32m{file}\033[0m\" não encontrado.")
             elif oper == 1:
-                print("\t\t\t\tArquivo encontrado, preparando para editar.")
+                print("\t\t\tArquivo encontrado, preparando para editar.")
                 edit(file)
                 break
             elif oper == 2:
-                print("\t\t\t\tArquivo encontrado, preparando para converter.")
+                print("\t\t\tArquivo encontrado, preparando para converter.")
                 convert(file, -64)
                 break
             elif oper == 3:
-                print("\t\t\t\tArquivo encontrado, aguarde a conversão.")
+                print("\t\t\tArquivo encontrado, aguarde a conversão.")
                 convert(file, 64)
                 break
         else:
@@ -63,14 +63,8 @@ def start():
         if opc in ("exit", "sair", "q"):
             end()
             break
-        elif opc == "1":
-            search(1)
-            proceed()
-        elif opc == "2":
-            search(2)
-            proceed()
-        elif opc == "3":
-            search(3)
+        elif opc in ("1", "2", "3"):
+            search(int(opc))
             proceed()
         else:
             print("\t\t\033[31mOpção inválida!\033[0m")
