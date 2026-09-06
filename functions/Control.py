@@ -1,9 +1,7 @@
 import os
-import sys
 from utils.Utils import menu, up, clear, end, backExit
 from functions.Converter import convert
 from functions.Editor import edit
-
 
 def proceed():
     while True:
