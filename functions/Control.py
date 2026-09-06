@@ -1,5 +1,6 @@
 import sys
 from utils.Utils import menu, exit
+from functions.Converter import convert
 
 def end():
     print(exit())
@@ -21,4 +22,4 @@ def start():
     while True:
         try: opc = input("    Opção: ").strip()
         except (EOFError, KeyboardInterrupt):
-            raise   
+            raise
