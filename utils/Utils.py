@@ -40,6 +40,10 @@ class Strings():
                 ║                                        ║
                 ╚════════════════════════════════════════╝"""
 
+    _Inputs = r"inputs/"
+
+    _Outputs = r"outputs/"
+
 def menu():
     clear()
     return Strings._Menu
@@ -69,3 +73,7 @@ def backExit(command):
         clear()
         print("\t\t\tVoltando")
         return True#break
+
+inputs:str = Strings._Inputs
+
+outputs:str = Strings._Outputs
