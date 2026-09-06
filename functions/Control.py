@@ -32,15 +32,15 @@ def search(oper):
                 print(f"\t\t\t\t\033[1;31m[ERRO] \033[0mArquivo \"\033[4;32m{file}\033[0m\" não encontrado.")
             elif oper == 1:
                 print("\t\t\tArquivo encontrado, preparando para editar.")
-                edit(file)
+                edit(name)
                 break
             elif oper == 2:
                 print("\t\t\tArquivo encontrado, preparando para converter.")
-                convert(file, -64)
+                convert(name, -64)
                 break
             elif oper == 3:
                 print("\t\t\tArquivo encontrado, aguarde a conversão.")
-                convert(file, 64)
+                convert(name, 64)
                 break
         else:
             print("\t\t\t\t\t\033[31mInvalido!"), clear()
