@@ -78,7 +78,11 @@ inputs:str = Strings._Inputs
 
 outputs:str = Strings._Outputs
 
-def openFile(file):
+def readInput(file:str):
     with open(inputs+file, 'r', encoding='utf-8') as f:
         data = f.read().strip()
         return data
+
+def writeOutput(file: str, data):
+    with open(outputs+file, 'r', encoding='utf-8') as f:
+        f.write(data)
