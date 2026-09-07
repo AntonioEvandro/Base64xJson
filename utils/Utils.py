@@ -87,7 +87,14 @@ def writeOutput(file: str, data):
     with open(outputs+file, 'r', encoding='utf-8') as f:
         f.write(data)
 
-def base64ForJson(file):
+def b64ForJson(file):
     decoded = base64.b64decode(file)
-    save = json.loads(decoded.decode('utf-8'))
-    return save
+    data = json.loads(decoded.decode('utf-8'))
+    return data
+
+def jsonLoads(value):
+    return json.loads(value)
+
+def jsonForB64(data):
+    update = json.dumps(data, separators=(',', ':'))
+    return base64.b64encode(update.encode('utf-8')).decode('utf-8')
