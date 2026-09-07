@@ -1,6 +1,6 @@
 import base64
 import json
-from utils.Utils import backExit, sucess, readInput, writeOutput, base64ForJson
+from utils.Utils import backExit, sucess, readInput, writeOutput, b64ForJson, jsonForB64
 
 def edit(name:str):
     """
@@ -9,7 +9,7 @@ def edit(name:str):
     encoded = readInput(name)
 
     try:
-        save = base64ForJson(encoded)
+        save = b64ForJson(encoded)
     except Exception as e:
         print(f"\033[1;31m[ERRO]\033[0m Aparentemente o arquivo não é Base64. {e}")
         return
@@ -63,8 +63,7 @@ def edit(name:str):
 
     saving = input("\nDeseja salvar as modificações no arquivo original? (s/n): ").strip().lower()
     if saving == 's' or saving == 'sim':
-        update = json.dumps(save, separators=(',', ':'))
-        newBase64 = base64.b64encode(update.encode('utf-8')).decode('utf-8')
+        newBase64 = jsonForB64(save)
 
         writeOutput(name, newBase64)
         print(sucess())
