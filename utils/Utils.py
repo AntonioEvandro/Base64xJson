@@ -89,7 +89,7 @@ def writeOutput(file: str, data):
 
 def b64ForJson(file):
     decoded = base64.b64decode(file)
-    data = json.loads(decoded.decode('utf-8'))
+    data = jsonLoads(decoded.decode('utf-8'))
     return data
 
 def jsonLoads(value):
