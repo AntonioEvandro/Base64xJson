@@ -1,6 +1,6 @@
 import base64
 import json
-from utils.Utils import backExit, sucess, readInput, writeOutput, b64ForJson, jsonForB64
+from utils.Utils import backExit, sucess, readInput, writeOutput, jsonLoads, b64ForJson, jsonForB64
 
 def edit(name:str):
     """
@@ -50,7 +50,7 @@ def edit(name:str):
                 elif typeAct == float:
                     newValue = float(newValueStr)
                 elif typeAct == list or typeAct == dict:
-                    newValue = json.loads(newValueStr)
+                    newValue = jsonLoads(newValueStr)
                 else:
                     newValue = newValueStr
 
