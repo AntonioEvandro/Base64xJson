@@ -1,4 +1,4 @@
-import sys, base64, json
+import sys
 
 class Strings():
     _Menu = """    ╔═══════════════════════════════════════════════════════╗
@@ -40,10 +40,6 @@ class Strings():
                 ║                                        ║
                 ╚════════════════════════════════════════╝"""
 
-    _Inputs = r"inputs/"
-
-    _Outputs = r"outputs/"
-
 def menu():
     clear()
     return Strings._Menu
@@ -66,39 +62,10 @@ def end():
     print(exit())
     sys.exit(0)
 
-def backExit(command):
+def backExit(command: str):
     if command in ("exit","sair","q"):
         return end()
     if command in ("return", "back", "voltar", "esc", "retornar"):
         clear()
         print("\t\t\tVoltando")
         return True#break
-
-inputs:str = Strings._Inputs
-
-outputs:str = Strings._Outputs
-
-def readInput(file:str):
-    with open(inputs+file, 'r', encoding='utf-8') as f:
-        data = f.read().strip()
-        return data
-
-def writeOutput(file: str, data):
-    with open(outputs+file, 'w', encoding='utf-8') as f:
-        f.write(data)
-
-def b64ForJson(file):
-    decoded = base64.b64decode(file)
-    data = jsonLoads(decoded.decode('utf-8'))
-    return data
-
-def jsonLoads(value):
-    return json.loads(value)
-
-def jsonForB64(data):
-    update = json.dumps(data, separators=(',', ':'))
-    return base64.b64encode(update.encode('utf-8')).decode('utf-8')
-
-def jsonDump(file:str, data):
-    with open(outputs+file, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4)

@@ -1,4 +1,6 @@
-from utils.Utils import backExit, sucess, readInput, writeOutput, jsonLoads, b64ForJson, jsonForB64
+from utils.Utils import backExit, sucess
+from utils.Handler import readInput, writeOutput
+from utils.Helper import b64toJson, jsonLoads, jsonToB64, viewValues
 
 def edit(name:str):
     """
@@ -7,20 +9,12 @@ def edit(name:str):
     encoded = readInput(name)
 
     try:
-        save = b64ForJson(encoded)
+        save = b64toJson(encoded)
     except Exception as e:
         print(f"\033[1;31m[ERRO]\033[0m Aparentemente o arquivo não é Base64. {e}")
         return
 
-    print("\n" + "="*60)
-    print("\t\tCampos disponiveis no arquivo")
-    print("="*60)
-    for key, value in save.items():
-        valPreview = str(value)
-        if len(valPreview) > 60:
-            valPreview = valPreview[:57] + "..."
-        print(f"[{key}] -> {valPreview}")
-        print("="*60)
+    viewValues(save)
 
     while True:
         choice = input("\nDigite o nome exato do campo que deseja modificar: ").strip()
@@ -61,7 +55,7 @@ def edit(name:str):
 
     saving = input("\nDeseja salvar as modificações no arquivo original? (s/n): ").strip().lower()
     if saving == 's' or saving == 'sim':
-        newBase64 = jsonForB64(save)
+        newBase64 = jsonToB64(save)
 
         writeOutput(name, newBase64)
         print(sucess())
