@@ -1,4 +1,4 @@
-import sys
+import sys, base64, json
 
 class Strings():
     _Menu = """    ╔═══════════════════════════════════════════════════════╗
@@ -86,3 +86,8 @@ def readInput(file:str):
 def writeOutput(file: str, data):
     with open(outputs+file, 'r', encoding='utf-8') as f:
         f.write(data)
+
+def base64ForJson(file):
+    decoded = base64.b64decode(file)
+    save = json.loads(decoded.decode('utf-8'))
+    return save
