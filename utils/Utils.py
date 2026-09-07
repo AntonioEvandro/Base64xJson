@@ -84,7 +84,7 @@ def readInput(file:str):
         return data
 
 def writeOutput(file: str, data):
-    with open(outputs+file, 'r', encoding='utf-8') as f:
+    with open(outputs+file, 'w', encoding='utf-8') as f:
         f.write(data)
 
 def b64ForJson(file):
@@ -98,3 +98,7 @@ def jsonLoads(value):
 def jsonForB64(data):
     update = json.dumps(data, separators=(',', ':'))
     return base64.b64encode(update.encode('utf-8')).decode('utf-8')
+
+def jsonDump(file:str, data):
+    with open(outputs+file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
