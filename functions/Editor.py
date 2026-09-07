@@ -1,16 +1,12 @@
 import base64
 import json
-from utils.Utils import backExit, sucess
+from utils.Utils import backExit, sucess, readInput, writeOutput
 
-def edit(name):
+def edit(name:str):
     """
     Abre o arquivo Base64, lista os campos e permite edições interativas.
     """
-    inputs = r"inputs/"
-    outputs = r"outputs/"
-    file = inputs + name
-    with open (file, 'r', encoding='utf-8') as f:
-        encoded = f.read().strip()
+    encoded = readInput(name)
 
     try:
         decoded = base64.b64decode(encoded)
@@ -71,8 +67,7 @@ def edit(name):
         update = json.dumps(save, separators=(',', ':'))
         newBase64 = base64.b64encode(update.encode('utf-8')).decode('utf-8')
 
-        with open(outputs+name, 'w', encoding='utf-8') as f:
-            f.write(newBase64)
+        writeOutput(name, newBase64)
         print(sucess())
     else:
         print("Alterações descartadas.")
