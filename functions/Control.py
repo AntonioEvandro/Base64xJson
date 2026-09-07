@@ -1,5 +1,5 @@
 import os
-from utils.Utils import menu, up, clear, end, backExit
+from utils.Utils import menu, clear, end, backExit
 from functions.Converter import convert
 from functions.Editor import edit
 
