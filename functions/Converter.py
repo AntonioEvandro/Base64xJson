@@ -16,7 +16,7 @@ def convert(fileName: str, nameOut: str, format: int):
             writeJson(nameOut, jsonData)
             print(sucess())
         except Exception as e:
-            print(f"[ERRO] Falha ao converter para JSON: {e}")
+            print(f"\t\t\t\033[1;31m[ERRO]\033[0m Falha ao converter para JSON: {e}")
 
     elif format == 64:
         try:
@@ -26,4 +26,4 @@ def convert(fileName: str, nameOut: str, format: int):
             writeOutput(nameOut, jsonStr)
             print(sucess())
         except Exception as e:
-            print(f"[ERRO] Falha ao converter para Base64: {e}")
+            print(f"\t\t\t\033[1;31m[ERRO]\033[0m Falha ao converter para Base64: {e}")
