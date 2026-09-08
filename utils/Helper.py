@@ -14,7 +14,7 @@ def jsonToB64(data: dict) -> str:
 
 def viewValues(data: dict):
     lines()
-    print("\n\t\t\t\033\t[44;97mCampos disponiveis no arquivo\t\033[0m\n")
+    print("\n\t\t\t\033[44;97m\tCampos disponiveis no arquivo\t\033[0m\n")
     lines()
     for key, value in data.items():
         valPreview = str(value)
