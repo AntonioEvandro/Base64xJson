@@ -14,7 +14,6 @@ def writeOutput(name: str, content: str):
     with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
 
-
 def writeJson(name: str, data: dict):
     path = os.path.join(OUTPUTS, name)
     with open(path, 'w', encoding='utf-8') as f:

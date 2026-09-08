@@ -59,6 +59,7 @@ def clear():
     print("\033[0m", end="")
 
 def end():
+    clear()
     print(exit())
     sys.exit(0)
 
@@ -66,6 +67,8 @@ def backExit(command: str):
     if command in ("exit","sair","q"):
         return end()
     if command in ("return", "back", "voltar", "esc", "retornar"):
-        clear()
-        print("\t\t\tVoltando")
+        clear(), print("\t\t\t\033[90mVoltando"), clear()
         return True#break
+
+def lines():
+    return     print("\t\t" + "="*100)

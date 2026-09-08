@@ -1,4 +1,5 @@
 import base64, json
+from utils.Utils import lines, clear
 
 def b64toJson(file: str) -> dict:
     decodedBytes = base64.b64decode(file)
@@ -12,12 +13,12 @@ def jsonToB64(data: dict) -> str:
     return base64.b64encode(compactJson.encode('utf-8')).decode('utf-8')
 
 def viewValues(data: dict):
-    print("\n" + "="*60)
-    print("\t\tCampos disponiveis no arquivo")
-    print("="*60)
+    lines()
+    print("\n\t\t\t\033\t[44;97mCampos disponiveis no arquivo\t\033[0m\n")
+    lines()
     for key, value in data.items():
         valPreview = str(value)
         if len(valPreview) > 60:
             valPreview = valPreview[:57] + "..."
-        print(f"[{key}] -> {valPreview}")
-        print("="*60)
+        print(f"\t\t\t[\033[92m{key}\033[0m] -> \033[93m{valPreview}")
+        clear(), lines()

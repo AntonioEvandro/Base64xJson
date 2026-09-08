@@ -2,7 +2,7 @@ from utils.Utils import sucess
 from utils.Handler import readInput, writeOutput, writeJson
 from utils.Helper import b64toJson, jsonToB64, jsonLoads
 
-def convert(fileName:str, format:int):
+def convert(fileName: str, nameOut: str, format: int):
     """
         Lê o arquivo e exporta para o formato desejado ('json' ou 'base64').
     """
@@ -13,7 +13,7 @@ def convert(fileName:str, format:int):
         try:
             jsonData = b64toJson(data)
 
-            writeJson(fileName+".json", jsonData)
+            writeJson(nameOut, jsonData)
             print(sucess())
         except Exception as e:
             print(f"[ERRO] Falha ao converter para JSON: {e}")
@@ -23,7 +23,7 @@ def convert(fileName:str, format:int):
             jsonData = jsonLoads(data)
             jsonStr = jsonToB64(jsonData)
 
-            writeOutput(fileName+".data", jsonStr)
+            writeOutput(nameOut, jsonStr)
             print(sucess())
         except Exception as e:
             print(f"[ERRO] Falha ao converter para Base64: {e}")
